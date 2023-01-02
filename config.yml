@@ -1,4 +1,4 @@
-baseURL: https://www.mhcp.dev
+# baseURL: https://www.mhcp.dev
 title: mhcp.dev
 paginate: 5
 # theme: charlolamode
