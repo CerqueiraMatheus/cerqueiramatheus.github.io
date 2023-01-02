@@ -21,7 +21,7 @@ h4,
 h5,
 h6 {
     color: var(--primary);
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Condensed';
 }
 
 body {
