@@ -1,5 +1,8 @@
 ---
 title: About the dream of becoming a scientist being a Brazilian
+topic: Opinion
+dateMonthYear: January 2023
+description: Nothing better than my dream to introduce myself...
 ---
 
 As most of the people around the world, I did not grow up in a rich family and, to be fair, I also did not grow up in a rich country. The reality of the country where I was born, Brazil, is a Latin American common story: the fight for basic rights and to ensure fair opportunities. But today I will not write about Brazil, but my desire: becoming a scientist being a Brazilian.
