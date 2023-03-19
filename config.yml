@@ -13,8 +13,8 @@ menu:
         - name: Articles
           url: articles/
           weight: 20
-        - name: Projects
-          url: projects
+        - name: Publications
+          url: publications
           weight: 15
         - name: About
           url: about/
