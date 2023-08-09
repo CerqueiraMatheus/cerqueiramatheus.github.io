@@ -12,8 +12,8 @@ Then, following my passion, I decided to continue my learning path studying Comp
 
 Since then, I’ve been studying several themes, since Data Structures, Mobile Development and Operational Systems to Data Science and Machine Learning applied to cancer cases prediction.
 
-[You can read more about me on my resume](https://drive.google.com/file/d/1ZRF00g4G459_rJt0D8yvx5FYGU64q_kT/view?usp=sharing).
+[You can read more about me on my resume](https://drive.google.com/file/d/1P8LEyNxtdcKM7c20k-iESvO_vWq0Ie89/view?usp=sharing).
 
-Contact me through my personal e-mail: matheus dot crqra at gmail dot com. 
+Contact me through my personal e-mail: matheus dot crqra at gmail dot com.
 
 It will be a pleasure talking to you 😉!
