@@ -47,7 +47,7 @@ params:
         title: Hello, I'm Matheus! 👋
         description: |
 
-          I'm a 22 years old Computer Science student.
+          I'm a 22 years old Computer Science student and SWE intern @ Microsoft.
         
         imageUrl: "/images/profile.png"
         imageTitle: my image
