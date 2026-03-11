@@ -58,14 +58,9 @@ nav a.active { color: var(--text); }
 /* ── Main ── */
 main { flex: 1; padding: 2rem 0 4rem; }
 main.home {
-	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 2rem 1.5rem;
-	max-width: var(--max-w);
-	margin: 0 auto;
-	width: 100%;
 }
 
 /* ── Landing ── */

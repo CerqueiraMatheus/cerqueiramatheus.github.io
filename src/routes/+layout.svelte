@@ -24,7 +24,7 @@
 </header>
 
 {#if isHome}
-	<main class="home">
+	<main class="container home">
 		{@render children()}
 	</main>
 {:else}
