@@ -1,16 +1,10 @@
-@font-face {
-	font-family: 'Cascadia Mono';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url('https://cdn.jsdelivr.net/fontsource/fonts/cascadia-mono@latest/latin-400-normal.woff2') format('woff2');
-}
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
 	--text: #111;
 	--bg: #fafafa;
 	--muted: #666;
-	--font: 'Cascadia Mono', monospace;
+	--font: 'Literata', serif;
 	--max-w: 640px;
 }
 

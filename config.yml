@@ -1,7 +1,7 @@
 siteTitle: Matheus Cerqueira
 
-fontUrl: https://cdn.jsdelivr.net/fontsource/fonts/cascadia-mono@latest/latin-400-normal.woff2
-fontFamily: "'Cascadia Mono', monospace"
+fontUrl: https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,700;1,400&display=swap
+fontFamily: "'Literata', serif"
 
 profile:
   name: Matheus Cerqueira
