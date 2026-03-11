@@ -186,7 +186,7 @@ main.home {
 .fullscreen-btn:hover { color: var(--text); }
 
 /* ── Footer ── */
-footer { padding: 2rem 0; font-size: 13px; color: var(--muted); text-align: center; text-transform: lowercase; }
+footer { padding: 2rem 0; font-size: 13px; color: var(--muted); text-transform: lowercase; }
 
 /* ── Responsive ── */
 @media (max-width: 480px) {
