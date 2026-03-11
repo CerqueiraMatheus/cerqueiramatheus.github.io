@@ -1,9 +1,8 @@
 import type { PageLoad } from './$types';
-import type { Component } from 'svelte';
 
-const pages = import.meta.glob('/content/pages/publications.md', { eager: true }) as Record<string, { default: Component }>;
+const pubsHtml = import.meta.glob('/.generated/articles/publications.html', { eager: true, query: '?raw', import: 'default' }) as Record<string, string>;
 
 export const load: PageLoad = () => {
-	const mod = Object.values(pages)[0];
-	return { component: mod.default };
+	const html = Object.values(pubsHtml)[0] ?? '';
+	return { html };
 };

@@ -1,0 +1,77 @@
+% title: Features of this site
+% date: 2026-03
+% description: A showcase of math, code, citations, and typography features available on mhcp.dev.
+
+This site is built with SvelteKit and uses Pandoc to convert LaTeX articles to HTML at build time. Here is what is available.
+
+\section{Math}
+
+Inline math works with dollar signs. For example, the quadratic formula is $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ and Euler's identity is $e^{i\pi} + 1 = 0$.
+
+Display math uses double dollars:
+
+$$\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}$$
+
+The cross-entropy loss commonly used in NLP:
+
+$$\mathcal{L}(\theta) = -\sum_{i=1}^{N} \log p_\theta(x_i)$$
+
+\section{Code}
+
+Code blocks use \texttt{verbatim} environments:
+
+\begin{verbatim}
+import torch
+import torch.nn as nn
+
+class Transformer(nn.Module):
+    def __init__(self, d_model: int, nhead: int):
+        super().__init__()
+        self.attention = nn.MultiheadAttention(d_model, nhead)
+        self.norm = nn.LayerNorm(d_model)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        attn_out, _ = self.attention(x, x, x)
+        return self.norm(x + attn_out)
+\end{verbatim}
+
+Inline code uses \texttt{texttt}, like \texttt{const x = 42}.
+
+\section{Images}
+
+Articles can include images from their \texttt{assets/} folder. The build script copies them to \texttt{static/articles/<slug>/} so they are served as static files.
+
+\begin{figure}[h]
+\centering
+\includegraphics{/posts/features/transformer.svg}
+\caption{A simplified transformer architecture diagram.}
+\end{figure}
+
+\section{Citations}
+
+Each article can have its own \texttt{refs.bib} file. Pandoc processes citations automatically via \texttt{--citeproc}.
+
+The Transformer architecture \cite{vaswani2017attention} revolutionized natural language processing. For foundational algorithms, see Knuth \cite{knuth1997art}.
+
+\section{Typography}
+
+Regular text uses Cascadia Mono. \textbf{Bold} and \emph{italic} work as expected.
+
+\begin{quote}
+Blockquotes are rendered from the quote environment.
+\end{quote}
+
+Lists work too:
+
+\begin{enumerate}
+\item First item
+\item Second item
+\item Third item
+\end{enumerate}
+
+\section{Publications}
+
+Site-wide publications are loaded from a BibTeX file (\texttt{content/refs.bib}) and rendered on the publications page. Article-specific references are kept in each article's own \texttt{refs.bib}.
+
+\bibliographystyle{plain}
+\bibliography{refs}

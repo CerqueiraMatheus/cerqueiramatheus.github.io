@@ -1,9 +1,12 @@
 /**
- * Typed re-export of config.json.
- * All site-wide settings live in /config.json at the repo root.
+ * Typed re-export of config.yml.
+ * All site-wide settings live in /config.yml at the repo root.
  * This module provides TypeScript interfaces and a typed CONFIG constant.
  */
-import configJson from '../../config.json';
+import yaml from 'js-yaml';
+
+const raw = import.meta.glob('/config.yml', { eager: true, query: '?raw', import: 'default' }) as Record<string, string>;
+const parsed = yaml.load(Object.values(raw)[0]) as SiteConfig;
 
 export interface SocialLink {
 	label: string;
@@ -32,13 +35,24 @@ export interface SiteConfig {
 	adsenseClientId: string;
 }
 
-export const CONFIG: SiteConfig = configJson as SiteConfig;
+export const CONFIG: SiteConfig = parsed;
 
-/** Frontmatter shape for articles in content/articles/*.md */
+/** Frontmatter shape for posts in content/posts/{slug}/article.tex */
 export interface ArticleMeta {
 	slug: string;
 	title: string;
 	/** YYYY-MM format for sorting and display */
 	date: string;
 	description: string;
+}
+
+/** Frontmatter shape for presentations in content/presentations/{slug}/article.tex */
+export interface PresentationMeta {
+	slug: string;
+	title: string;
+	/** YYYY-MM format */
+	date: string;
+	description: string;
+	/** URL to the PDF slides (embedded as iframe) */
+	url: string;
 }

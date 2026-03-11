@@ -1,16 +1,21 @@
 node_modules
 
-# Output
+# Build output
 .output
 .vercel
 .netlify
 .wrangler
 /.svelte-kit
 /build
+/.generated
+/static/posts
 
 # IDE
 .vscode
 .idea
+*.swp
+*.swo
+*~
 
 # OS
 .DS_Store
@@ -26,5 +31,6 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Test results
+# Tests
 /test-results
+/coverage

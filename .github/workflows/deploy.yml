@@ -25,6 +25,7 @@ jobs:
           node-version: 22
           cache: npm
 
+      - run: pandoc --version | head -1
       - run: npm ci
       - run: npm run build
 

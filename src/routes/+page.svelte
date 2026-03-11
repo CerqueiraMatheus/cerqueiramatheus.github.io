@@ -8,8 +8,7 @@
 	<p class="landing-role">{CONFIG.profile.role}</p>
 	<p class="landing-social">
 		{#each CONFIG.social as link, i}
-			{#if i > 0} &middot; {/if}
-			<a href={link.url} target="_blank" rel="noopener">{link.label}</a>
+			{#if i > 0}<span class="dot"> · </span>{/if}<a href={link.url} target="_blank" rel="noopener">{link.label}</a>
 		{/each}
 	</p>
 </div>

@@ -1,49 +1,65 @@
 # Copilot Instructions — mhcp.dev
 
-## Build and lint
+## Commands
 
 ```sh
-npm run dev          # Dev server with HMR
-npm run build        # Production build (static output to build/)
-npm run check        # TypeScript + Svelte type-checking
-./run.sh             # Install, build, and preview
+npm run dev            # Convert .tex then start dev server
+npm run build          # Convert .tex then production build (output: build/)
+npm run check          # TypeScript + Svelte type-checking
+npm test               # Run tests
+npm run test:coverage  # Run tests with coverage report
+npm run new            # Scaffold a new post or presentation
+./run.sh               # Install, build, and preview
 ```
+
+Requires `pandoc` installed locally and on CI (pre-installed on GitHub Actions `ubuntu-latest`).
 
 ## Architecture
 
 SvelteKit static site (`@sveltejs/adapter-static`) deployed to GitHub Pages at `www.mhcp.dev`. Extreme minimalist design: Cascadia Mono font, two-color monochrome palette, no decorative elements.
 
-**Configuration:**
-- `config.json` (root) — All site strings, URLs, profile, social links, nav, font URL, AdSense client ID. Edit this file to change any site setting.
-- `src/lib/config.ts` — Imports `config.json`, exports typed `CONFIG` object and `ArticleMeta` interface.
+**Build pipeline:**
+1. `scripts/tex2html.mjs` runs Pandoc to convert `.tex` → `.html` into `.generated/`
+2. Vite builds the SvelteKit app, loading generated HTML via `import.meta.glob(?raw)`
+3. `adapter-static` outputs the final site to `build/`
 
-**Content (file-based):**
+**Configuration:**
+- `config.yml` (root) — All site strings, URLs, profile, social links, nav, font, AdSense. Parsed by `js-yaml` at build time.
+- `src/lib/config.ts` — Typed re-export of `config.yml`.
+
+**Content:**
 ```
 content/
-  articles/
-    being-a-scientist.md   # Frontmatter: title, date (YYYY-MM), description
+  posts/<slug>/
+    article.tex        # LaTeX source (metadata in % comments: title, date, description)
+    refs.bib           # Per-post BibTeX references (optional)
+    assets/            # Images, SVGs (auto-copied to static/posts/<slug>/)
+  presentations/<slug>/
+    article.tex        # LaTeX source (metadata includes % url: for PDF embed)
   pages/
-    about.md               # About page prose
-    publications.md        # Numbered citation list
+    about.tex          # Standalone page (LaTeX)
+  refs.bib             # Site-wide publications (rendered on /publications)
+  ieee.csl             # Citation style for Pandoc citeproc
 ```
 
-**Key modules:**
-- `src/lib/content/index.ts` — Article loader via `import.meta.glob`. Exports `articles`, `getArticle()`.
-
 **Route structure:**
-- `/` — Landing page: avatar, name, role, social text links. Vertically centered.
-- `/about` — About page (markdown)
-- `/articles` — Article list: `date — title` rows
-- `/articles/[slug]` — Article detail (markdown via mdsvex)
-- `/publications` — Publications (markdown)
+- `/` — Landing: avatar, name, role, social text links. Vertically centered.
+- `/about` — About page (LaTeX → HTML)
+- `/posts` — Post list with search, year filter, pagination
+- `/posts/[slug]` — Post detail (LaTeX → HTML via Pandoc, with MathML + citeproc)
+- `/presentations` — Presentation list with search, year filter, pagination
+- `/presentations/[slug]` — Presentation detail with embedded PDF iframe + fullscreen
+- `/publications` — Publications from `content/refs.bib` in IEEE format
 
 ## Key conventions
 
-- **Svelte 5 runes**: `$props()`, `$derived`, `$state`. No legacy syntax.
-- **Extreme minimalism**: No borders, shadows, radius, gradients, icons, emoji, transitions. Links always underlined. Titles lowercased via CSS `text-transform`.
-- **Cascadia Mono**: Single monospace font for everything. Loaded via `@font-face` in `app.css`, URL from `config.json`.
-- **Two colors**: `#111` text, `#fafafa` background. No accent colors.
-- **Adding an article**: Drop `.md` in `content/articles/` with frontmatter `title`, `date`, `description`. No code changes.
-- **AdSense**: Library script in `app.html` `<head>` only (enables ad serving on subdomains).
-- **Google TS style guide**: Interfaces over type aliases, `import type`, named exports, `const`/`let` only.
+- **Svelte 5 runes**: `$props()`, `$derived`. No legacy syntax.
+- **Extreme minimalism**: No borders, shadows, radius, gradients, icons, emoji, favicons, transitions. Links always underlined. All titles lowercased via CSS `text-transform`.
+- **Cascadia Mono**: Single monospace font. Loaded via `@font-face` in `app.css`.
+- **Two colors**: `#111` text, `#fafafa` background.
+- **LaTeX content**: All content is `.tex`. Math uses `$...$` and `$$...$$` — Pandoc converts to MathML (zero client JS). Code uses `\begin{verbatim}`.
+- **Citations**: Per-post `refs.bib` + `\cite{}` in `.tex`. Pandoc `--citeproc --csl ieee.csl` renders IEEE-format references.
+- **Adding a post**: Create `content/posts/<slug>/` with `article.tex` (and optionally `refs.bib`, `assets/`). Or run `npm run new`.
+- **Adding a presentation**: Create `content/presentations/<slug>/` with `article.tex` including `% url:` for the PDF embed. Or run `npm run new`.
+- **AdSense**: Library script in `app.html` `<head>` (enables ad serving on subdomains).
 - **Deploy**: Push to `main` triggers `.github/workflows/deploy.yml`.

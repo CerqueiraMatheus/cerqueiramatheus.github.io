@@ -23,10 +23,18 @@
 	</div>
 </header>
 
-<main class:home={isHome} class="container">
-	{@render children()}
-</main>
+{#if isHome}
+	<main class="home">
+		{@render children()}
+	</main>
+{:else}
+	<main class="container">
+		{@render children()}
+	</main>
+{/if}
 
 <footer>
-	<div class="container">{CONFIG.profile.name}</div>
+	<div class="container">
+		{CONFIG.profile.name} <span class="dot"> · </span> <a href="https://github.com/CerqueiraMatheus/cerqueiramatheus.github.io" target="_blank" rel="noopener">source</a>
+	</div>
 </footer>

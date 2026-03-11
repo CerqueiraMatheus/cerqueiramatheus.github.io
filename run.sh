@@ -4,6 +4,9 @@ set -e
 echo "installing dependencies..."
 npm install --silent
 
+echo "converting articles..."
+node scripts/tex2html.mjs
+
 echo "building..."
 npm run build --silent
 
