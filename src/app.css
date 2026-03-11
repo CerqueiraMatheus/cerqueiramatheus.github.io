@@ -187,6 +187,7 @@ main.home {
 
 /* ── Footer ── */
 footer { padding: 2rem 0; font-size: 13px; color: var(--muted); text-transform: lowercase; }
+footer .container { text-align: center; }
 
 /* ── Responsive ── */
 @media (max-width: 480px) {
