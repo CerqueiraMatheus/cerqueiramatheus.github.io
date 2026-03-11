@@ -1,0 +1,115 @@
+@font-face {
+	font-family: 'Cascadia Mono';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('https://cdn.jsdelivr.net/fontsource/fonts/cascadia-mono@latest/latin-400-normal.woff2') format('woff2');
+}
+
+:root {
+	--text: #111;
+	--bg: #fafafa;
+	--muted: #666;
+	--font: 'Cascadia Mono', monospace;
+	--max-w: 640px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { height: 100%; }
+
+body {
+	font-family: var(--font);
+	font-size: 15px;
+	background: var(--bg);
+	color: var(--text);
+	line-height: 1.8;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+a { color: var(--text); text-decoration: underline; }
+
+.container {
+	max-width: var(--max-w);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	width: 100%;
+}
+
+/* ── Header ── */
+header { padding: 1.5rem 0; }
+
+.header-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.site-name {
+	font-size: 15px;
+	font-weight: 400;
+	text-transform: lowercase;
+}
+
+.site-name a { text-decoration: none; }
+
+nav { display: flex; gap: 1.5rem; }
+
+nav a { font-size: 14px; color: var(--muted); }
+nav a:hover { color: var(--text); }
+nav a.active { color: var(--text); }
+
+/* ── Main ── */
+main { flex: 1; padding: 2rem 0 4rem; }
+main.home { display: flex; align-items: center; justify-content: center; padding: 0 1.5rem; }
+
+/* ── Landing ── */
+.landing { text-align: center; width: 100%; max-width: var(--max-w); }
+.landing-avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; }
+.landing-name { font-size: 24px; font-weight: 400; margin-bottom: 0.25rem; text-transform: lowercase; }
+.landing-role { font-size: 14px; color: var(--muted); margin-bottom: 2rem; }
+.landing-social { font-size: 14px; color: var(--muted); }
+.landing-social a { color: var(--muted); }
+.landing-social a:hover { color: var(--text); }
+
+/* ── Page ── */
+.page-title { font-size: 20px; font-weight: 400; margin-bottom: 2rem; text-transform: lowercase; }
+
+/* ── Prose ── */
+.prose { font-size: 15px; }
+.prose p { margin-bottom: 1.25rem; }
+.prose h2 { font-size: 17px; font-weight: 700; margin: 2.5rem 0 1rem; }
+.prose h3 { font-size: 15px; font-weight: 700; margin: 2rem 0 0.75rem; }
+.prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.25rem; }
+.prose li { margin-bottom: 0.25rem; }
+.prose blockquote {
+	margin: 1.5rem 0;
+	padding-left: 1.25rem;
+	border-left: 2px solid var(--muted);
+	color: var(--muted);
+}
+.prose strong { font-weight: 700; }
+
+/* ── Article list ── */
+.article-list { list-style: none; }
+.article-list li { margin-bottom: 0.5rem; }
+.article-list a { text-decoration: underline; }
+.article-date { color: var(--muted); font-size: 14px; margin-right: 0.75rem; }
+
+/* ── Article page ── */
+.article-header { margin-bottom: 2rem; }
+.article-header h1 { font-size: 20px; font-weight: 400; margin-bottom: 0.25rem; text-transform: lowercase; }
+.article-meta { font-size: 14px; color: var(--muted); }
+.back-link { display: inline-block; font-size: 14px; margin-bottom: 1.5rem; }
+
+/* ── Footer ── */
+footer { padding: 2rem 0; font-size: 13px; color: var(--muted); text-align: center; }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+	body { font-size: 14px; }
+	.landing-name { font-size: 20px; }
+	nav { gap: 1rem; }
+}

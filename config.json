@@ -1,0 +1,24 @@
+{
+	"siteTitle": "Matheus Cerqueira",
+	"fontUrl": "https://cdn.jsdelivr.net/fontsource/fonts/cascadia-mono@latest/latin-400-normal.woff2",
+	"fontFamily": "'Cascadia Mono', monospace",
+	"profile": {
+		"name": "Matheus Cerqueira",
+		"role": "PhD student in AI/ML/NLP · Software Engineer @ Microsoft",
+		"avatar": "/images/profile.png",
+		"email": "matheus.crqra@gmail.com"
+	},
+	"social": [
+		{ "label": "github", "url": "https://github.com/cerqueiramatheus" },
+		{ "label": "scholar", "url": "https://scholar.google.com/citations?user=cerqueiramatheus" },
+		{ "label": "linkedin", "url": "https://linkedin.com/in/cerqueiramatheus" },
+		{ "label": "lattes", "url": "http://lattes.cnpq.br/1321342846727787" },
+		{ "label": "twitter", "url": "https://twitter.com/matheuscerqra" }
+	],
+	"nav": [
+		{ "label": "about", "url": "/about" },
+		{ "label": "articles", "url": "/articles" },
+		{ "label": "publications", "url": "/publications" }
+	],
+	"adsenseClientId": "ca-pub-2205226114982087"
+}
